@@ -42,7 +42,7 @@ function delete_make($id)
         $statement->execute();
         $statement->closeCursor();
     } catch (PDOException $e) {
-        throw new Exception("Cannot delete course with existing assignments.");
+        throw new Exception("Cannot delete make with active vehicles.");
     }
     return true;
 }
