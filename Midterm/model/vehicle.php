@@ -5,15 +5,7 @@ function get_vehicles($sort = 'price', $order = 'desc', $make = '', $type = '', 
     global $db;
 
     $query = <<<EOT
-SELECT 
-    vehicles.id as id,
-    vehicles.model as model,
-    vehicles.year as year,
-    vehicles.price as price,
-    makes.make as make,
-    types.type as type,
-    classes.class as class
-FROM vehicles
+SELECT * FROM vehicles
     INNER JOIN makes ON vehicles.make_id = makes.id
     INNER JOIN types ON vehicles.type_id = types.id
     INNER JOIN classes ON vehicles.class_id = classes.id
@@ -90,7 +82,6 @@ function delete_vehicle($id)
     $statement->bindValue(':id', $id, PDO::PARAM_INT);
 
     $statement->execute();
-    $vehicles = $statement->fetchAll();
     $statement->closeCursor();
     return true;
 }
