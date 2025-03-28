@@ -5,11 +5,18 @@ function get_vehicles($sort = 'price', $order = 'desc', $make = '', $type = '', 
     global $db;
 
     $query = <<<EOT
-SELECT * FROM vehicles
+SELECT 
+    vehicles.id as id,
+    vehicles.model as model,
+    vehicles.year as year,
+    vehicles.price as price,
+    makes.make as make,
+    types.type as type,
+    classes.class as class
+FROM vehicles
     INNER JOIN makes ON vehicles.make_id = makes.id
     INNER JOIN types ON vehicles.type_id = types.id
     INNER JOIN classes ON vehicles.class_id = classes.id
-
 EOT;
 
     switch ($sort) {
@@ -84,4 +91,26 @@ function delete_vehicle($id)
     $statement->execute();
     $statement->closeCursor();
     return true;
+}
+
+function add_vehicle($data) {
+    global $db;
+    $query = <<<EOT
+INSERT INTO
+    vehicles (make_id, class_id, type_id, model, year, price)
+VALUES
+    (:make_id, :class_id, :type_id, :model, :year, :price)
+EOT;
+
+    $statement = $db->prepare($query);
+
+    $statement->bindValue(':make_id', $data['make_id'], PDO::PARAM_INT);
+    $statement->bindValue(':class_id', $data['class_id'], PDO::PARAM_INT);
+    $statement->bindValue(':type_id', $data['type_id'], PDO::PARAM_INT);
+    $statement->bindValue(':model', $data['model'], PDO::PARAM_STR);
+    $statement->bindValue(':year', $data['year'], PDO::PARAM_INT);
+    $statement->bindValue(':price', $data['price'], PDO::PARAM_STR);
+
+    $statement->execute();
+    $statement->closeCursor();
 }

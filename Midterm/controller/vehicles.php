@@ -33,3 +33,65 @@ function delete_vehicle_action() {
     delete_vehicle($id);
     header("Location: /admin/?action=home");
 }
+
+function add_vehicle_form($error = '') {
+    $makes = get_makes();
+    $types = get_types();
+    $classes = get_classes();
+
+    $make_id = filter_input(INPUT_POST, 'make_id', FILTER_UNSAFE_RAW);
+    $type_id = filter_input(INPUT_POST, 'type_id', FILTER_UNSAFE_RAW);
+    $class_id = filter_input(INPUT_POST, 'class_id', FILTER_UNSAFE_RAW);
+    $model = filter_input(INPUT_POST, 'model', FILTER_UNSAFE_RAW);
+    $price = filter_input(INPUT_POST, 'price', FILTER_UNSAFE_RAW);
+    $year = filter_input(INPUT_POST, 'year', FILTER_UNSAFE_RAW);
+
+    include('../view/header.php');
+    include('../view/add_vehicle.php');
+    include('../view/footer.php');
+}
+
+function add_vehicle_action() {
+    $make_id = filter_input(INPUT_POST, 'make_id', FILTER_UNSAFE_RAW);
+    $type_id = filter_input(INPUT_POST, 'type_id', FILTER_UNSAFE_RAW);
+    $class_id = filter_input(INPUT_POST, 'class_id', FILTER_UNSAFE_RAW);
+    $model = filter_input(INPUT_POST, 'model', FILTER_UNSAFE_RAW);
+    $price = filter_input(INPUT_POST, 'price', FILTER_UNSAFE_RAW);
+    $year = filter_input(INPUT_POST, 'year', FILTER_UNSAFE_RAW);
+
+    if (!$make_id) {
+        $error = 'Make not provided';
+        return add_vehicle_form($error);
+    }
+    if (!$type_id) {
+        $error = 'Type not provided';
+        return add_vehicle_form($error);
+    }
+    if (!$class_id) {
+        $error = 'Class not provided';
+        return add_vehicle_form($error);
+    }
+    if (!$year) {
+        $error = 'Year not provided';
+        return add_vehicle_form($error);
+    }
+    if (!$model) {
+        $error = 'Model not provided';
+        return add_vehicle_form($error);
+    }
+    if (!$price) {
+        $error = 'Price not provided';
+        return add_vehicle_form($error);
+    }
+
+    add_vehicle([
+        'make_id' => $make_id,
+        'type_id' => $type_id,
+        'class_id' => $class_id,
+        'year' => $year,
+        'model' => $model,
+        'price' => $price,
+    ]);
+
+    header("Location: /admin/?action=home");
+}

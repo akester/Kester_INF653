@@ -42,9 +42,15 @@ switch ($action) {
         return add_type_action();
     case 'delete_type':
         return delete_type_action();
-    
+
     case 'delete_vehicle':
         return delete_vehicle_action();
+    case 'add_vehicle_form':
+        return add_vehicle_form();
+    case 'add_vehicle':
+        return add_vehicle_action();
+
+
     case 'home':
     default:
         return home_action();
