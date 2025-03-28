@@ -6,8 +6,8 @@
 
 <select onchange="window.location.href = this.value">
     <option value="">Sort</option>
-    <option value="?order=price&sort=desc">Price Desc</option>
-    <option value="?order=year&sort=desc">Year Desc</option>
+    <option value="?order=desc&sort=price">Price Desc</option>
+    <option value="?order=desc&sort=year">Year Desc</option>
 </select>
 
 <select onchange="window.location.href = this.value">

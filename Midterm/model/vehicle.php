@@ -22,24 +22,26 @@ EOT;
     switch ($sort) {
         case 'year':
             $order_clause = ' ORDER BY year DESC';
+            break;
         case 'price':
         default:
             $order_clause = ' ORDER BY price DESC';
     }
 
     if ($make) {
-        $query .= "WHERE make_id = :make" . $order_clause;
+        $query .= " WHERE make_id = :make" . $order_clause;
         $statement = $db->prepare($query);
         $statement->bindValue(':make', $make, PDO::PARAM_INT);
     } elseif ($type) {
-        $query .= "WHERE type_id = :type" . $order_clause;
+        $query .= " WHERE type_id = :type" . $order_clause;
         $statement = $db->prepare($query);
         $statement->bindValue(':type', $type, PDO::PARAM_INT);
     } elseif ($class) {
-        $query .= "WHERE class_id = :class" . $order_clause;
+        $query .= " WHERE class_id = :class" . $order_clause;
         $statement = $db->prepare($query);
         $statement->bindValue(':class', $class, PDO::PARAM_INT);
     } else {
+        $query .= $order_clause;
         $statement = $db->prepare($query);
     }
 
