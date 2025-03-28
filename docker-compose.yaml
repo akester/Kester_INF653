@@ -13,6 +13,6 @@ services:
     image: phpmyadmin
     restart: always
     ports:
-      - 1313:80
+      - 80:80
     environment:
       - PMA_ARBITRARY=1
