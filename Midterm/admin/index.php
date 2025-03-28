@@ -3,6 +3,7 @@
 // Include controllers
 require_once('../controller/classes.php');
 require_once('../controller/makes.php');
+require_once('../controller/types.php');
 require_once('../controller/vehicles.php');
 
 // Include Models
@@ -32,6 +33,15 @@ switch ($action) {
         return add_class_action();
     case 'delete_class':
         return delete_class_action();
+
+    case 'types':
+        return types_action();
+    case 'add_type_form':
+        return add_type_form();
+    case 'add_type':
+        return add_type_action();
+    case 'delete_type':
+        return delete_type_action();
     
     case 'delete_vehicle':
         return delete_vehicle_action();

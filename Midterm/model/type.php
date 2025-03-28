@@ -18,3 +18,31 @@ function get_types()
 
     return $out;
 }
+
+function add_type($type)
+{
+    global $db;
+    $query = 'INSERT INTO types (type) VALUES (:type)';
+    $statement = $db->prepare($query);
+    $statement->bindValue(':type', $type, PDO::PARAM_STR);
+    $statement->execute();
+    $statement->closeCursor();
+}
+
+function delete_type($id)
+{
+    global $db;
+
+    try {
+        $query = 'DELETE FROM types WHERE id = :id';
+
+        $statement = $db->prepare($query);
+        $statement->bindValue(':id', $id, PDO::PARAM_INT);
+
+        $statement->execute();
+        $statement->closeCursor();
+    } catch (PDOException $e) {
+        throw new Exception("Cannot delete type with active vehicles.");
+    }
+    return true;
+}
