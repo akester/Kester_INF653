@@ -1,3 +1,5 @@
+<h1>Add Vehicle</h1>
+
 <?php if ($error): ?>
     <div class="alert">
         <?= $error; ?>

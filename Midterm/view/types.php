@@ -1,3 +1,5 @@
+<h1>Vehicle Types</h1>
+
 <?php if ($error): ?>
 <div class="alert">
     <?= $error; ?>
@@ -15,3 +17,8 @@
     </tr>
 <?php endforeach; ?>
 </table>
+
+<ul>
+    <li><a href="?action=home">Admin Home</a></li>
+    <li><a href="?action=add_type_form">Add Type</a></li>
+</ul>

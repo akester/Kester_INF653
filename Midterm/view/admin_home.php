@@ -1,3 +1,5 @@
+<h1>Admin Home</h1>
+
 <?php if ($error): ?>
 <div class="alert">
     <?= $error; ?>
@@ -52,3 +54,9 @@
     </tr>
 <?php endforeach; ?>
 </table>
+
+<ul>
+    <li><a href="?action=makes">View / Change Makes</a></li>
+    <li><a href="?action=classes">View / Change Classes</a></li>
+    <li><a href="?action=types">View / Change Types</a></li>
+</ul>
