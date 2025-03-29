@@ -1,4 +1,5 @@
 <?php
+// Classes home page
 function classes_action($error = '')
 {
     $classes = get_classes();
@@ -8,6 +9,7 @@ function classes_action($error = '')
     include('../view/footer.php');
 }
 
+// Form for adding new class
 function add_class_form($error = '')
 {
     include('../view/header.php');
@@ -15,6 +17,7 @@ function add_class_form($error = '')
     include('../view/footer.php');
 }
 
+// Post action for adding a new class
 function add_class_action()
 {
     $class = filter_input(INPUT_POST, 'class', FILTER_UNSAFE_RAW);
@@ -29,6 +32,7 @@ function add_class_action()
     header("Location: /admin/?action=classes");
 }
 
+// Delete Class
 function delete_class_action()
 {
     $id = filter_input(INPUT_GET, 'id', FILTER_UNSAFE_RAW);

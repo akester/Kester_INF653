@@ -1,4 +1,6 @@
 <?php
+
+// Public homepage
 function home_action() {
     $sort = filter_input(INPUT_GET, 'sort', FILTER_UNSAFE_RAW);
     $order = filter_input(INPUT_GET, 'order', FILTER_UNSAFE_RAW);

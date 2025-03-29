@@ -1,5 +1,6 @@
 <?php
 
+// Get all vehicle classes
 function get_classes()
 {
     global $db;
@@ -15,6 +16,7 @@ function get_classes()
     return $out;
 }
 
+// Add a new class
 function add_class($class)
 {
     global $db;
@@ -25,6 +27,7 @@ function add_class($class)
     $statement->closeCursor();
 }
 
+// Delete a class
 function delete_class($id)
 {
     global $db;

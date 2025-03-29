@@ -1,5 +1,6 @@
 <?php
 
+// Get vehicles with filters and sort.
 function get_vehicles($sort = 'price', $order = 'desc', $make = '', $type = '', $class = '')
 {
     global $db;
@@ -51,6 +52,7 @@ EOT;
     return $vehicles;
 }
 
+// Get a single vehicle
 function get_vehicle($id)
 {
     global $db;
@@ -81,6 +83,7 @@ EOT;
     return $vehicles[0];
 }
 
+// Delete a vehicle
 function delete_vehicle($id)
 {
     global $db;
@@ -95,6 +98,7 @@ function delete_vehicle($id)
     return true;
 }
 
+// Add vehicle
 function add_vehicle($data) {
     global $db;
     $query = <<<EOT

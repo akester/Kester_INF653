@@ -1,4 +1,6 @@
 <?php
+
+// Admin home page
 function home_action($error = '') {
     $sort = filter_input(INPUT_GET, 'sort', FILTER_UNSAFE_RAW);
     $order = filter_input(INPUT_GET, 'order', FILTER_UNSAFE_RAW);
@@ -16,6 +18,7 @@ function home_action($error = '') {
     include('../view/footer.php');
 }
 
+// Delete vehicle action
 function delete_vehicle_action() {
     $id = filter_input(INPUT_GET, 'id', FILTER_UNSAFE_RAW);
 
@@ -34,6 +37,7 @@ function delete_vehicle_action() {
     header("Location: /admin/?action=home");
 }
 
+// Form to add new vehicles
 function add_vehicle_form($error = '') {
     $makes = get_makes();
     $types = get_types();
@@ -51,6 +55,7 @@ function add_vehicle_form($error = '') {
     include('../view/footer.php');
 }
 
+// Action to actually create new vehicles
 function add_vehicle_action() {
     $make_id = filter_input(INPUT_POST, 'make_id', FILTER_UNSAFE_RAW);
     $type_id = filter_input(INPUT_POST, 'type_id', FILTER_UNSAFE_RAW);

@@ -1,5 +1,6 @@
 <?php
 
+// Get all vehicle makes
 function get_makes()
 {
     global $db;
@@ -19,6 +20,7 @@ function get_makes()
     return $out;
 }
 
+// Add a new make
 function add_make($make)
 {
     global $db;
@@ -29,6 +31,7 @@ function add_make($make)
     $statement->closeCursor();
 }
 
+// Delete a make
 function delete_make($id)
 {
     global $db;

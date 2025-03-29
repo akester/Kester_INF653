@@ -1,4 +1,5 @@
 <?php
+// List vehicle makes
 function makes_action($error = '')
 {
     $makes = get_makes();
@@ -8,6 +9,7 @@ function makes_action($error = '')
     include('../view/footer.php');
 }
 
+// Form to add new make
 function add_make_form($error = '')
 {
     include('../view/header.php');
@@ -15,6 +17,7 @@ function add_make_form($error = '')
     include('../view/footer.php');
 }
 
+// Action to add new make
 function add_make_action()
 {
     $make = filter_input(INPUT_POST, 'make', FILTER_UNSAFE_RAW);
@@ -29,6 +32,7 @@ function add_make_action()
     header("Location: /admin/?action=makes");
 }
 
+// Delete vehicle make
 function delete_make_action()
 {
     $id = filter_input(INPUT_GET, 'id', FILTER_UNSAFE_RAW);

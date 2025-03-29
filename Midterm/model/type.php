@@ -1,5 +1,6 @@
 <?php
 
+// Get all vehicle types
 function get_types()
 {
     global $db;
@@ -19,6 +20,7 @@ function get_types()
     return $out;
 }
 
+// Add a new vehicle types
 function add_type($type)
 {
     global $db;
@@ -29,6 +31,7 @@ function add_type($type)
     $statement->closeCursor();
 }
 
+// Delete vehicle type
 function delete_type($id)
 {
     global $db;

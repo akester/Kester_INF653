@@ -1,4 +1,5 @@
 <?php
+// Show vehicle types
 function types_action($error = '')
 {
     $types = get_types();
@@ -8,6 +9,7 @@ function types_action($error = '')
     include('../view/footer.php');
 }
 
+// Form to add vehicle type
 function add_type_form($error = '')
 {
     include('../view/header.php');
@@ -15,6 +17,7 @@ function add_type_form($error = '')
     include('../view/footer.php');
 }
 
+// Action to add new type
 function add_type_action()
 {
     $type = filter_input(INPUT_POST, 'type', FILTER_UNSAFE_RAW);
@@ -29,6 +32,7 @@ function add_type_action()
     header("Location: /admin/?action=types");
 }
 
+// Delete vehicle type
 function delete_type_action()
 {
     $id = filter_input(INPUT_GET, 'id', FILTER_UNSAFE_RAW);
