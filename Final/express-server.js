@@ -32,7 +32,7 @@ app.use("/data", express.static(path.join(__dirname, "data")));
 
 app.use("/", require("./routes/root.js"));
 
-app.use("/api/user", require("./routes/api/user.js"));
+app.use("/api/user", require("./routes/api/auth.js"));
 
 app.get("/*splat", (req, res) => {
     if (req.accepts('application/json')) {

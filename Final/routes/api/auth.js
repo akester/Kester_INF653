@@ -3,7 +3,7 @@ const router = express.Router();
 
 const {
     RegisterUser,
-} = require("../../controller/userController");
+} = require("../../controller/authController");
 
 router
     .route("/register")
